@@ -1,16 +1,17 @@
 # test_jem
 
-A new Flutter project.
+## Экраны из ТЗ
 
-## Getting Started
+экран 1 (): 
+экран 2 ():
+экран 3 ():
+экран 4 ():
 
-This project is a starting point for a Flutter application.
+## Прочее
 
-A few resources to get you started if this is your first Flutter project:
+### Структура проекта
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Навигация
+Используется Navigator 1.0.
+Для каждой вкладки у виджета BottomNavigationBar ([custom_bottom_nav_bar.dart](lib/ui/widgets/custom_bottom_nav_bar.dart)) создаётся свой навигатор TabNavigator ([tab_navigator.dart](lib/ui/widgets/tab_navigator.dart)). Собственно создание этих навигаторов - [app.dart](lib/ui/screens/app.dart). 
+Т.о. обеспечивается незасимая навигация на вкладках, и при этом BottomNavigationBar остаётся постоянно на экране.

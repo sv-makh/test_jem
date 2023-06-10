@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_jem/ui/widgets/bottom_nav_bar.dart';
+import 'package:test_jem/ui/widgets/custom_bottom_nav_bar.dart';
 import 'package:test_jem/ui/widgets/tab_navigator.dart';
 
 //чтобы навигация на вкладках осуществлялась независимо
 //и BottomNavigationBar всегда оставалась на экране,
-//на каждой вкладке сделан свой навигатор (со своим ключом GlobalKey)
+//на каждой вкладке создаётся свой навигатор (со своим ключом GlobalKey)
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -42,6 +42,9 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+      //при использовании кнопки назад выход из приложения
+      //только если находимся на первом экране любой вкладки
+      //(некуда больше переходить)
       onWillPop: () async =>
           !await _navigatorKeys[_selectedIndex]!.currentState!.maybePop(),
       child: Scaffold(
@@ -53,7 +56,7 @@ class _AppState extends State<App> {
             _buildOffstageNavigator(3),
           ],
         ),
-        bottomNavigationBar: BottomNavBar(
+        bottomNavigationBar: CustomBottomNavBar(
           selectedIndex: _selectedIndex,
           onItemTapped: _onItemTapped,
         ),
