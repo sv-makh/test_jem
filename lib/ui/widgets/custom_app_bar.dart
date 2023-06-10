@@ -24,6 +24,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Text(date),
             ],
           ),
+          Spacer(),
+          CircleAvatar(
+            backgroundImage: AssetImage('assets/images/avatar.png'),
+          ),
         ],
       ),
     );
