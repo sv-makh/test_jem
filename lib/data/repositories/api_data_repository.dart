@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:test_jem/data/api_client/api_client.dart';
+import 'package:test_jem/data/models/response_data_dishes.dart';
 
 import '../models/category.dart';
+import '../models/dish.dart';
 import '../models/response_data_categories.dart';
 
-class CategoriesRepository {
+class ApiDataRepository {
   final _client = ApiClient(Dio(BaseOptions(contentType: "application/json")));
 
   Future<List<Category>> loadCategories() async {
@@ -13,5 +15,10 @@ class CategoriesRepository {
     return responseDataCategories.categories
         .map((data) => Category.fromMap(data))
         .toList();
+  }
+
+  Future<List<Dish>> loadDishes() async {
+    ResponseDataDishes responseDataDishes = await _client.getDishes();
+    return responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
   }
 }

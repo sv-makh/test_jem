@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_jem/ui/screens/account_screen.dart';
-import 'package:test_jem/ui/screens/category_screen.dart';
-import 'package:test_jem/ui/screens/main_screen.dart';
+import 'package:test_jem/ui/screens/dishes_screen.dart';
+import 'package:test_jem/ui/screens/categories_screen.dart';
 import 'package:test_jem/ui/screens/search_screen.dart';
 import 'package:test_jem/ui/screens/shopping_card_screen.dart';
 
@@ -36,8 +36,8 @@ class TabNavigator extends StatelessWidget {
   TabNavigator({required this.navigatorKey, required this.tabIndex});
 
   //функция перехода с вкладки Главная в категорию
-  void _pushCategory(BuildContext context, {int catIndex = 0}) {
-    var routeBuilders = _routeBuildersMain(context, catIndex: catIndex);
+  void _pushCategory(BuildContext context, {String catName = ''}) {
+    var routeBuilders = _routeBuildersMain(context, catName: catName);
 
     Navigator.push(
       context,
@@ -50,12 +50,12 @@ class TabNavigator extends StatelessWidget {
 
   //экраны для путей вкладки Главная
   Map<String, WidgetBuilder> _routeBuildersMain(BuildContext context,
-      {int catIndex = 0}) {
+      {String catName = ''}) {
     return {
-      TabNavigatorRoutesMain.root: (context) => MainScreen(
-            onPush: (catIndex) => _pushCategory(context, catIndex: catIndex),
+      TabNavigatorRoutesMain.root: (context) => CategoriesScreen(
+            onPush: (catName) => _pushCategory(context, catName: catName),
           ),
-      TabNavigatorRoutesMain.category: (context) => CategoryScreen(index: catIndex,),
+      TabNavigatorRoutesMain.category: (context) => DishesScreen(categoryName: catName,),
     };
   }
 

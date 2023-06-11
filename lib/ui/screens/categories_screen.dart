@@ -1,22 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_jem/bloc/categories_bloc/categories_bloc.dart';
 import 'package:test_jem/data/models/response_data_categories.dart';
-
 import 'package:test_jem/data/api_client/api_client.dart';
 import '../../data/models/response_data_dishes.dart';
+import '../widgets/categories_screen/categories_item.dart';
 import '../widgets/custom_app_bar.dart';
 
-class MainScreen extends StatelessWidget {
-  final ValueChanged<int>? onPush;
+class CategoriesScreen extends StatelessWidget {
+  final ValueChanged<String>? onPush;
 
-  const MainScreen({super.key, this.onPush});
+  const CategoriesScreen({super.key, this.onPush});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: _buildBody(context),
-/*      body: SingleChildScrollView(
+      body: BlocBuilder<CategoriesBloc, CategoriesState>(
+        builder: (context, state) {
+          if (state is CategoriesLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is CategoriesLoaded) {
+            return SingleChildScrollView(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return CategoriesItem(
+                      category: state.categories[index], onPush: onPush);
+                },
+                itemCount: state.categories.length,
+              ),
+            );
+          } else {
+            //CategoriesError()
+            return Center(
+              child: Text('Что-то пошло не так'),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+/*      body: _buildBody(context),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             TextButton(
@@ -27,44 +57,8 @@ class MainScreen extends StatelessWidget {
           ],
         ),
       ),*/
-    );
-  }
 
-/*  FutureBuilder<ResponseData> _buildBody(BuildContext context) {
-    final apiService =
-        ApiService(Dio(BaseOptions(contentType: 'application/json')));
-    return FutureBuilder<ResponseData>(
-        future: apiService.getCategories(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasData) {
-            final ResponseData posts = snapshot.data!;
-            return _cats(context, posts); } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        });
-  }
-
-  Widget _cats(BuildContext context, ResponseData posts) {
-    return ListView.builder(
-      itemCount: posts.categories.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(posts.categories[index]['id'].toString()),
-          subtitle: Text(posts.categories[index]['name'].toString()),
-        );
-      },
-    );
-  }*/
-
-  FutureBuilder<ResponseDataDishes> _buildBody(BuildContext context) {
+/*  FutureBuilder<ResponseDataDishes> _buildBody(BuildContext context) {
     final client = ApiClient(Dio(BaseOptions(contentType: "application/json")));
     return FutureBuilder<ResponseDataDishes>(
       future: client.getDishes(),
@@ -96,5 +90,5 @@ class MainScreen extends StatelessWidget {
       },
       itemCount: posts.dishes.length,
     );
-  }
+  }*/
 }

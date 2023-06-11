@@ -1,8 +1,8 @@
 class Dish {
   int index;
   String name;
-  double price;
-  double weight;
+  int price;
+  int weight;
   String description;
   String imageUrl;
   List<String> tegs;
@@ -16,4 +16,13 @@ class Dish {
     required this.imageUrl,
     required this.tegs,
   });
+
+  Dish.fromMap(Map<String, dynamic> data)
+      : index = data['id'],
+        name = data['name'],
+        price = data['price'],
+        weight = data['weight'],
+        description = data['description'],
+        imageUrl = data['image_url'],
+        tegs = data['tegs'];
 }
