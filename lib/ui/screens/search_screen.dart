@@ -9,11 +9,7 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Column(
-        children: [
-
-        ],
-      ),
+      body: Container(),
     );
   }
 }

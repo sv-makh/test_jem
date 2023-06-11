@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/dishes_bloc/dishes_bloc.dart';
 
+import '../../data/models/dish.dart';
+import '../widgets/dishes_screen/dishes_item.dart';
+
 class DishesScreen extends StatelessWidget {
   final String categoryName;
 
@@ -21,16 +24,22 @@ class DishesScreen extends StatelessWidget {
             );
           } else if (state is DishesLoaded) {
             return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                ),
-                itemBuilder: (context, index) {
-                  return DishesItem(
-
-                  )
-                },
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+              ),
+              itemCount: state.dishes.length,
+              itemBuilder: (context, index) {
+                return DishesItem(
+                  dish: state.dishes[index],
+                );
+              },
+            );
+          } else {
+            //DishesError()
+            return Center(
+              child: Text('Что-то пошло не так'),
             );
           }
         },

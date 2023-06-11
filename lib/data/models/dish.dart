@@ -24,5 +24,5 @@ class Dish {
         weight = data['weight'],
         description = data['description'],
         imageUrl = data['image_url'],
-        tegs = data['tegs'];
+        tegs = ['mock teg'];//data['tegs'];
 }

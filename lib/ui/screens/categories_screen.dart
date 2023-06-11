@@ -29,7 +29,9 @@ class CategoriesScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return CategoriesItem(
-                      category: state.categories[index], onPush: onPush);
+                    category: state.categories[index],
+                    onPush: onPush,
+                  );
                 },
                 itemCount: state.categories.length,
               ),

@@ -19,6 +19,12 @@ class ApiDataRepository {
 
   Future<List<Dish>> loadDishes() async {
     ResponseDataDishes responseDataDishes = await _client.getDishes();
-    return responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
+    print('loadDishes happening!');
+    print(responseDataDishes.dishes.length);
+    for (var d in responseDataDishes.dishes) {print(d['tegs']);}
+    List<Dish> result = responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
+    for (var d in result) {print('twice ${d.index}');}
+    return result;
+    //return responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
   }
 }

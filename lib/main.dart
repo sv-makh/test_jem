@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/categories_bloc/categories_bloc.dart';
+import 'package:test_jem/bloc/dishes_bloc/dishes_bloc.dart';
 import 'package:test_jem/data/repositories/api_data_repository.dart';
 import 'package:test_jem/ui/screens/app.dart';
 
 void main() {
   runApp(MyApp(
-    categoriesRepository: ApiDataRepository(),
+    apiDataRepository: ApiDataRepository(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key, required this.categoriesRepository});
+  MyApp({super.key, required this.apiDataRepository});
 
-  final ApiDataRepository categoriesRepository;
+  final ApiDataRepository apiDataRepository;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
-              CategoriesBloc(apiDataRepository: categoriesRepository)
-                ..add(CategoriesStarted()),
+          create: (_) => CategoriesBloc(apiDataRepository: apiDataRepository)
+            ..add(CategoriesStarted()),
         ),
+        BlocProvider(
+          create: (_) => DishesBloc(apiDataRepository: apiDataRepository)
+            ..add(DishesStarted()),
+        )
       ],
       child: MaterialApp(
         title: 'Тестовое',
