@@ -19,13 +19,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           const Icon(Icons.location_on_outlined),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(city),
               Text(date),
             ],
           ),
-          Spacer(),
-          CircleAvatar(
+          const Spacer(),
+          const CircleAvatar(
             backgroundImage: AssetImage('assets/images/avatar.png'),
           ),
         ],
