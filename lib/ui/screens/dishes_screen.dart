@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/dishes_bloc/dishes_bloc.dart';
 import 'package:test_jem/ui/widgets/constants.dart';
 import 'package:test_jem/ui/widgets/dishes_screen/dishes_appbar.dart';
-
-import '../../data/models/dish.dart';
+import 'package:test_jem/ui/widgets/error_screen_widget.dart';
 import '../widgets/dishes_screen/dishes_item.dart';
 import '../widgets/dishes_screen/tag_button.dart';
+import '../widgets/loading_screen_widget.dart';
 
 class DishesScreen extends StatelessWidget {
   final String categoryName;
 
-  DishesScreen({super.key, required this.categoryName});
+  const DishesScreen({super.key, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,10 @@ class DishesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: DishesAppbar(title: categoryName),
-/*      appBar: AppBar(
-        title: Text(categoryName),
-      ),*/
       body: BlocBuilder<DishesBloc, DishesState>(
         builder: (context, state) {
           if (state is DishesLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return const LoadingScreenWidget();
           } else if (state is DishesLoaded) {
             return Padding(
               padding: const EdgeInsets.only(left: sidePadding, right: sidePadding),
@@ -68,9 +63,7 @@ class DishesScreen extends StatelessWidget {
             );
           } else {
             //DishesError()
-            return Center(
-              child: Text('Что-то пошло не так'),
-            );
+            return const ErrorScreenWidget();
           }
         },
       ),

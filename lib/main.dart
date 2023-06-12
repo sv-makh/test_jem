@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) =>
-              ShoppinCartBloc(shoppingCartRepository: shoppingCartRepository)
+              ShoppingCartBloc(shoppingCartRepository: shoppingCartRepository)
                 ..add(ShoppingCartStarted()),
         )
       ],

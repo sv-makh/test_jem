@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
@@ -7,6 +5,7 @@ import 'package:test_jem/data/models/dish.dart';
 import 'package:test_jem/ui/widgets/constants.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/dish_dialog_screen/spacer_box.dart';
+import 'package:test_jem/ui/widgets/dish_metrics.dart';
 
 import '../widgets/dish_dialog_screen/custom_icon_button.dart';
 
@@ -31,13 +30,14 @@ class DishDialogScreen extends StatelessWidget {
         padding: const EdgeInsets.all(sidePadding),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(children: [
               Container(
                 //размеры подобраны экспериментально для лучшего вида
                 width: double.infinity,
                 height: imageSize + additionSize,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xffF8F7F5),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
@@ -58,12 +58,12 @@ class DishDialogScreen extends StatelessWidget {
                   child: Row(
                 children: [
                   CustomIconButton(
-                    icon: Icon(Icons.favorite_border),
+                    icon: const Icon(Icons.favorite_border),
                     onTap: () {},
                   ),
                   const SizedBox(width: 8),
                   CustomIconButton(
-                      icon: Icon(Icons.close),
+                      icon: const Icon(Icons.close),
                       onTap: () {
                         Navigator.pop(context);
                       })
@@ -71,28 +71,12 @@ class DishDialogScreen extends StatelessWidget {
               )),
             ]),
             const SpacerBox(),
-            Row(
-              children: [
-                Text(
-                  dish.name,
-                  style: const TextStyle(fontSize: 16),
-                )
-              ],
+            Text(
+              dish.name,
+              style: const TextStyle(fontSize: 16),
             ),
             const SpacerBox(),
-            Row(children: [
-              Text(
-                '${dish.price.toString()} ₽  ',
-                style: const TextStyle(fontSize: 14),
-              ),
-              Text(
-                '${dish.weight.toString()}г',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black.withOpacity(0.5),
-                ),
-              )
-            ]),
+            DishMetrics(dish: dish),
             const SpacerBox(),
             Text(
               dish.description,
@@ -105,7 +89,7 @@ class DishDialogScreen extends StatelessWidget {
             CustomTextButton(
               text: 'Добавить в корзину',
               onPressed: () {
-                BlocProvider.of<ShoppinCartBloc>(context).add(ShoppingCartDishAdded(dish));
+                BlocProvider.of<ShoppingCartBloc>(context).add(ShoppingCartDishAdded(dish));
               },
             ),
           ],

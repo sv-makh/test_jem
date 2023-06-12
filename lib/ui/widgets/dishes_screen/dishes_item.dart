@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:test_jem/data/models/dish.dart';
 import 'package:test_jem/ui/screens/dish_dialog_screen.dart';
 
+import '../dish_image.dart';
+
 class DishesItem extends StatelessWidget {
-  const DishesItem({super.key, required this.dish, required this.width, required this.height});
+  const DishesItem({
+    super.key,
+    required this.dish,
+    required this.width,
+    required this.height,
+  });
 
   final Dish dish;
   final double width;
@@ -11,7 +18,6 @@ class DishesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: () {
         showDialog(
@@ -20,27 +26,19 @@ class DishesItem extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(4),
+        padding: const EdgeInsets.all(4),
         width: width,
         height: height,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: width,
-              height: width,
-              decoration: BoxDecoration(
-                color: Color(0xffF8F7F5),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-              child: Image.network(dish.image_url),
+            DishImage(
+              size: width,
+              imageUrl: dish.image_url,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: width,
-                    child: Text(dish.name, style: TextStyle(fontSize: 14))),
-              ],
-            ),
+            SizedBox(
+                width: width,
+                child: Text(dish.name, style: const TextStyle(fontSize: 14))),
           ],
         ),
       ),

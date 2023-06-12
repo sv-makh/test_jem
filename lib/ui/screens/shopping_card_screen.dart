@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
+import 'package:test_jem/ui/widgets/loading_screen_widget.dart';
 import '../../data/models/dish.dart';
 import '../widgets/constants.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/error_screen_widget.dart';
 import '../widgets/shopping_cart_screen/cart_item.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
@@ -14,13 +16,11 @@ class ShoppingCartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      body: BlocBuilder<ShoppinCartBloc, ShoppingCartState>(
+      appBar: const CustomAppBar(),
+      body: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
         builder: (context, state) {
           if (state is ShoppingCartLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return const LoadingScreenWidget();
           } else if (state is ShoppingCartLoaded) {
             return Padding(
               padding: const EdgeInsets.only(
@@ -49,9 +49,7 @@ class ShoppingCartScreen extends StatelessWidget {
               ),
             );
           } else { //ShoppingCartError()
-            return Center(
-              child: Text('Что-то пошло не так'),
-            );
+            return const ErrorScreenWidget();
           }
         },
       ),

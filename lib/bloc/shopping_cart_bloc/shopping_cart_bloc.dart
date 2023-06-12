@@ -8,8 +8,8 @@ import '../../data/models/dish.dart';
 part 'shopping_cart_event.dart';
 part 'shopping_card_state.dart';
 
-class ShoppinCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
-  ShoppinCartBloc({required this.shoppingCartRepository}) : super(ShoppingCartLoading()) {
+class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
+  ShoppingCartBloc({required this.shoppingCartRepository}) : super(ShoppingCartLoading()) {
     on<ShoppingCartStarted>(_onStarted);
     on<ShoppingCartDishAdded>(_onDishAdded);
     on<ShoppingCartDishRemoved>(_onDishRemoved);
