@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/dishes_bloc/dishes_bloc.dart';
+import 'package:test_jem/ui/widgets/constants.dart';
 
 import '../../data/models/dish.dart';
 import '../widgets/dishes_screen/dishes_item.dart';
@@ -12,6 +13,11 @@ class DishesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int numOfColumns = 3;
+    double itemWidth =
+        MediaQuery.of(context).size.width / numOfColumns - sidePadding * 2;
+    double itemHeight = itemWidth + 50;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryName),
@@ -23,18 +29,22 @@ class DishesScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is DishesLoaded) {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
+            return Padding(
+              padding: const EdgeInsets.only(left: sidePadding, right: sidePadding),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: numOfColumns,
+                  childAspectRatio: (itemWidth / itemHeight),
+                ),
+                itemCount: state.dishes.length,
+                itemBuilder: (context, index) {
+                  return DishesItem(
+                    dish: state.dishes[index],
+                    width: itemWidth,
+                    height: itemHeight,
+                  );
+                },
               ),
-              itemCount: state.dishes.length,
-              itemBuilder: (context, index) {
-                return DishesItem(
-                  dish: state.dishes[index],
-                );
-              },
             );
           } else {
             //DishesError()

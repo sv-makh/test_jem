@@ -1,28 +1,29 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'dish.g.dart';
+
+@JsonSerializable()
 class Dish {
-  int index;
+  int id;
   String name;
   int price;
   int weight;
   String description;
-  String imageUrl;
+  String image_url;
   List<String> tegs;
 
   Dish({
-    required this.index,
+    required this.id,
     required this.name,
     required this.price,
     required this.weight,
     required this.description,
-    required this.imageUrl,
+    required this.image_url,
     required this.tegs,
   });
 
-  Dish.fromMap(Map<String, dynamic> data)
-      : index = data['id'],
-        name = data['name'],
-        price = data['price'],
-        weight = data['weight'],
-        description = data['description'],
-        imageUrl = data['image_url'],
-        tegs = ['mock teg'];//data['tegs'];
+  factory Dish.fromJson(Map<String, dynamic> json) =>
+      _$DishFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DishToJson(this);
 }

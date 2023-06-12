@@ -6,6 +6,7 @@ import 'package:test_jem/data/models/response_data_categories.dart';
 import 'package:test_jem/data/api_client/api_client.dart';
 import '../../data/models/response_data_dishes.dart';
 import '../widgets/categories_screen/categories_item.dart';
+import '../widgets/constants.dart';
 import '../widgets/custom_app_bar.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -25,15 +26,21 @@ class CategoriesScreen extends StatelessWidget {
             );
           } else if (state is CategoriesLoaded) {
             return SingleChildScrollView(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return CategoriesItem(
-                    category: state.categories[index],
-                    onPush: onPush,
-                  );
-                },
-                itemCount: state.categories.length,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: sidePadding,
+                  right: sidePadding,
+                ),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return CategoriesItem(
+                      category: state.categories[index],
+                      onPush: onPush,
+                    );
+                  },
+                  itemCount: state.categories.length,
+                ),
               ),
             );
           } else {

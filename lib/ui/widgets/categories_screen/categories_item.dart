@@ -15,13 +15,13 @@ class CategoriesItem extends StatelessWidget {
       onTap: () => onPush?.call(category.name),
       child: Padding(
         padding:
-            const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 16.0, right: 16.0),
+            const EdgeInsets.only(top: 4.0, bottom: 4.0),
         child: Container(
           height: 148,
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),
               image: DecorationImage(
-                image: NetworkImage(category.imageUrl),
+                image: NetworkImage(category.image_url),
                 fit: BoxFit.cover,
               )),
           child: Padding(

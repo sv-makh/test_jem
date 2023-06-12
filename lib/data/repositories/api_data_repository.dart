@@ -13,18 +13,14 @@ class ApiDataRepository {
     ResponseDataCategories responseDataCategories =
         await _client.getCategories();
     return responseDataCategories.categories
-        .map((data) => Category.fromMap(data))
+        .map((data) => Category.fromJson(data))
         .toList();
   }
 
   Future<List<Dish>> loadDishes() async {
     ResponseDataDishes responseDataDishes = await _client.getDishes();
-    print('loadDishes happening!');
-    print(responseDataDishes.dishes.length);
-    for (var d in responseDataDishes.dishes) {print(d['tegs']);}
-    List<Dish> result = responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
-    for (var d in result) {print('twice ${d.index}');}
-    return result;
-    //return responseDataDishes.dishes.map((data) => Dish.fromMap(data)).toList();
+    return responseDataDishes.dishes
+        .map((data) => Dish.fromJson(data))
+        .toList();
   }
 }
