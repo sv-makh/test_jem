@@ -69,7 +69,7 @@ class TabNavigator extends StatelessWidget {
   //экраны для путей вкладки Корзина
   Map<String, WidgetBuilder> _routeBuildersShoppingCart(BuildContext context) {
     return {
-      TabNavigatorRoutesShoppingCart.root: (context) => ShoppingCart(),
+      TabNavigatorRoutesShoppingCart.root: (context) => ShoppingCartScreen(),
     };
   }
 

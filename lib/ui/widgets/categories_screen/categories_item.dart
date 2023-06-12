@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/dishes_bloc/dishes_bloc.dart';
 import '../../../data/models/category.dart';
 
 class CategoriesItem extends StatelessWidget {
@@ -12,10 +14,11 @@ class CategoriesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPush?.call(category.name),
+      onTap: () {
+        onPush?.call(category.name);
+      },
       child: Padding(
-        padding:
-            const EdgeInsets.only(top: 4.0, bottom: 4.0),
+        padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
         child: Container(
           height: 148,
           decoration: BoxDecoration(

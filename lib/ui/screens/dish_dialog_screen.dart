@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
 import 'package:test_jem/data/models/dish.dart';
 import 'package:test_jem/ui/widgets/constants.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
@@ -102,7 +104,9 @@ class DishDialogScreen extends StatelessWidget {
             const SpacerBox(),
             CustomTextButton(
               text: 'Добавить в корзину',
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<ShoppinCartBloc>(context).add(ShoppingCartDishAdded(dish));
+              },
             ),
           ],
         ),

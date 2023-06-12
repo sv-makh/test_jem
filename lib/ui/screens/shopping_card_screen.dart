@@ -1,10 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ShoppingCart extends StatelessWidget {
-  const ShoppingCart({super.key});
+import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
+import 'package:test_jem/ui/widgets/custom_text_button.dart';
+import '../../data/models/dish.dart';
+import '../widgets/constants.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/shopping_cart_screen/cart_item.dart';
+
+class ShoppingCartScreen extends StatelessWidget {
+  const ShoppingCartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: CustomAppBar(),
+      body: BlocBuilder<ShoppinCartBloc, ShoppingCartState>(
+        builder: (context, state) {
+          if (state is ShoppingCartLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is ShoppingCartLoaded) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: sidePadding,
+                right: sidePadding,
+                bottom: sidePadding,
+              ),
+              child: Column(
+                children: [
+                  ListView.builder(itemBuilder: (context, index) {
+                    Dish currentDish = state.cart.uniqueDishes[index];
+                    return CartItem(
+                      dish: currentDish,
+                      count: state.cart.countOfDish(currentDish),
+                    );
+                  },
+                    itemCount: state.cart.uniqueDishes.length,
+                    shrinkWrap: true,
+                  ),
+                  const Spacer(),
+                  CustomTextButton(
+                    text: 'Оплатить ${state.cart.totalPrice} ₽',
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            );
+          } else { //ShoppingCartError()
+            return Center(
+              child: Text('Что-то пошло не так'),
+            );
+          }
+        },
+      ),
+    );
   }
 }
