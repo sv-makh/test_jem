@@ -18,7 +18,6 @@ class CustomTextButton extends StatelessWidget {
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(color: Color(0xff3364E0)),
           ),
         ),
       ),

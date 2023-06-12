@@ -5,6 +5,7 @@ import 'package:test_jem/ui/widgets/constants.dart';
 
 import '../../data/models/dish.dart';
 import '../widgets/dishes_screen/dishes_item.dart';
+import '../widgets/dishes_screen/tag_button.dart';
 
 class DishesScreen extends StatelessWidget {
   final String categoryName;
@@ -31,19 +32,37 @@ class DishesScreen extends StatelessWidget {
           } else if (state is DishesLoaded) {
             return Padding(
               padding: const EdgeInsets.only(left: sidePadding, right: sidePadding),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: numOfColumns,
-                  childAspectRatio: (itemWidth / itemHeight),
-                ),
-                itemCount: state.dishes.length,
-                itemBuilder: (context, index) {
-                  return DishesItem(
-                    dish: state.dishes[index],
-                    width: itemWidth,
-                    height: itemHeight,
-                  );
-                },
+              child: Column(
+                //mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    height: 35,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return TagButton(text: state.tags[index], activeTag: state.activeTag);
+                      },
+                      itemCount: state.tags.length,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Expanded(
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: numOfColumns,
+                        childAspectRatio: (itemWidth / itemHeight),
+                      ),
+                      itemCount: state.dishes.length,
+                      itemBuilder: (context, index) {
+                        return DishesItem(
+                          dish: state.dishes[index],
+                          width: itemWidth,
+                          height: itemHeight,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             );
           } else {

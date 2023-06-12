@@ -10,12 +10,15 @@ class DishesLoading extends DishesState {
 }
 
 class DishesLoaded extends DishesState {
-  const DishesLoaded(this.dishes);
+  const DishesLoaded(this.dishes, this.allDishes, this.tags, this.activeTag);
 
   final List<Dish> dishes;
+  final List<Dish> allDishes;
+  final List<String> tags;
+  final String activeTag;
 
   @override
-  List<Object> get props => [dishes];
+  List<Object> get props => [dishes, allDishes, tags, activeTag];
 }
 
 class DishesError extends DishesState {

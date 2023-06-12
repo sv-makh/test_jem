@@ -11,20 +11,65 @@ part 'dishes_state.dart';
 class DishesBloc extends Bloc<DishesEvent, DishesState> {
   DishesBloc({required this.apiDataRepository}) : super(DishesLoading()) {
     on<DishesStarted>(_onStarted);
+    on<DishesTagTapped>(_onTagTapped);
   }
 
   final ApiDataRepository apiDataRepository;
+  late final List<Dish> allDishes;
+  late final List<String> tags;
 
   Future<void> _onStarted(
-    DishesStarted event,
-    Emitter<DishesState> emitter,
-  ) async {
+      DishesStarted event, Emitter<DishesState> emitter) async {
     emitter(DishesLoading());
     try {
-      final dishes = await apiDataRepository.loadDishes();
-      emitter(DishesLoaded(dishes));
+      allDishes = await apiDataRepository.loadDishes();
+      final dishes = [...allDishes];
+      tags = _getTags(allDishes);
+      String activeTag = '';
+      if (tags.contains(_allMenu)) {
+        activeTag = _allMenu;
+      } else {
+        activeTag = tags[0];
+      }
+      emitter(DishesLoaded(dishes, allDishes, tags, activeTag));
     } catch (_) {
       emitter(DishesError());
     }
   }
+
+  void _onTagTapped(DishesTagTapped event, Emitter<DishesState> emitter) {
+    List<Dish> dishesWithTag = _pickDishes(allDishes, event.tag);
+    emitter(DishesLoaded(dishesWithTag, allDishes, tags, event.tag));
+  }
+}
+
+final String _allMenu = 'Все меню';
+
+List<Dish> _pickDishes(List<Dish> allDishes, String tag) {
+  List<Dish> result = [];
+  for (var dish in allDishes) {
+    if (dish.tegs.contains(tag)) {
+      result.add(dish);
+    }
+  }
+  return result;
+}
+
+List<String> _getTags(List<Dish> allDishes) {
+  Set<String> tagSet = {};
+  List<String> result = [];
+
+  for (var dish in allDishes) {
+    for (var tag in dish.tegs) {
+      tagSet.add(tag);
+    }
+  }
+
+  result = tagSet.toList();
+  if (tagSet.contains(_allMenu)) {
+    result.remove(_allMenu);
+    result.insert(0, _allMenu);
+  }
+
+  return result;
 }
