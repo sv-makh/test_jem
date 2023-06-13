@@ -8,6 +8,7 @@ import 'package:test_jem/data/repositories/shopping_cart_repository.dart';
 import 'package:test_jem/ui/screens/app.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(
     apiDataRepository: ApiDataRepository(),
     shoppingCartRepository: ShoppingCartRepository(),
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'SFProDisplay',
         ),
         home: App(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

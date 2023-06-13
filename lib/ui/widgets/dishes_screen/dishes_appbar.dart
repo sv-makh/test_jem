@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../helpers/constants.dart';
 
-class DishesAppbar extends StatelessWidget  implements PreferredSizeWidget {
+class DishesAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   @override
@@ -21,7 +21,14 @@ class DishesAppbar extends StatelessWidget  implements PreferredSizeWidget {
       title: Row(
         children: [
           const Spacer(),
-          Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
+          SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
+              child: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
           const Spacer(),
           const CircleAvatar(
             backgroundImage: AssetImage('assets/images/avatar.png'),
