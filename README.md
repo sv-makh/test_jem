@@ -3,15 +3,19 @@
 ## Экраны из ТЗ
 
 экран 1 ([ui/screens/categories_screen.dart](ui/screens/categories_screen.dart)):
+
 <img src="assets/screenshots/main.png" alt= “main.png” width="250">
 
 экран 2 ([ui/screens/dishes_screen.dart](ui/screens/dishes_screen.dart)):
+
 <img src="assets/screenshots/category.png" alt= “category.png” width="250">
 
 экран 3 ([ui/screens/dish_dialog_screen.dart](ui/screens/dish_dialog_screen.dart)):
+
 <img src="assets/screenshots/dish.png" alt= “dish.png” width="250">
 
 экран 4 ([ui/screens/shopping_cart_screen.dart](ui/screens/shopping_cart_screen.dart)):
+
 <img src="assets/screenshots/cart.png" alt= “cart.png” width="250">
 
 ## Прочее
