@@ -21,7 +21,7 @@ class DishesAppbar extends StatelessWidget  implements PreferredSizeWidget {
       title: Row(
         children: [
           const Spacer(),
-          Text(title),
+          Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
           const Spacer(),
           const CircleAvatar(
             backgroundImage: AssetImage('assets/images/avatar.png'),

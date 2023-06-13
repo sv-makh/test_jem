@@ -32,7 +32,7 @@ class CartItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 119, child: Text(dish.name)),
+              SizedBox(width: 119, child: Text(dish.name, style: TextStyle(fontWeight: FontWeight.bold),)),
               DishMetrics(dish: dish),
             ],
           ),

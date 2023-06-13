@@ -13,7 +13,7 @@ class DishMetrics extends StatelessWidget {
       children: [
         Text(
           '${dish.price.toString()} ₽ ',
-          style: const TextStyle(fontSize: 14),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
         Text(
           '· ${dish.weight.toString()}г',

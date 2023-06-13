@@ -32,7 +32,7 @@ class CategoriesItem extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12, left: 16),
             child: Text(
               category.name,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
         ),

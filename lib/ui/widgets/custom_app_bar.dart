@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 
 import '../helpers/constants.dart';
 
@@ -37,11 +38,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return AppBar(
       title: Row(
         children: [
-          const Icon(Icons.location_on_outlined),
+          const Icon(CustomIcons.location),
+          const SizedBox(width: 4),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(city, style: const TextStyle(fontSize: 18)),
+              Text(city,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  )),
               Text(
                 date,
                 style: TextStyle(

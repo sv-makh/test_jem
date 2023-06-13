@@ -75,7 +75,11 @@ flutter:
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/CustomIcons.ttf
-
+    - family: SFProDisplay
+      fonts:
+        - asset: assets/fonts/SFProDisplay/SF-Pro-Display-Regular.otf
+        - asset: assets/fonts/SFProDisplay/SF-Pro-Display-Bold.otf
+          weight: 600
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

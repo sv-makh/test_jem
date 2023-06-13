@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
 import 'package:test_jem/data/models/dish.dart';
 import 'package:test_jem/ui/helpers/constants.dart';
+import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/dish_dialog_screen/spacer_box.dart';
 import 'package:test_jem/ui/widgets/dish_image.dart';
@@ -45,7 +46,7 @@ class DishDialogScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       CustomIconButton(
-                        icon: const Icon(Icons.favorite_border),
+                        icon: const Icon(CustomIcons.heart),
                         onTap: () {},
                       ),
                       const SizedBox(width: 8),
@@ -60,7 +61,7 @@ class DishDialogScreen extends StatelessWidget {
             const SpacerBox(),
             Text(
               dish.name,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SpacerBox(),
             DishMetrics(dish: dish),
