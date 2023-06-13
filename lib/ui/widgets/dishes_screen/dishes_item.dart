@@ -38,8 +38,12 @@ class DishesItem extends StatelessWidget {
               imageUrl: dish.image_url,
             ),
             SizedBox(
-                width: width,
-                child: Text(dish.name, style: const TextStyle(fontSize: 14))),
+              width: width,
+              child: Text(
+                dish.name,
+                style: const TextStyle(fontSize: 14),
+              ),
+            ),
           ],
         ),
       ),

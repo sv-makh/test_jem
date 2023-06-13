@@ -10,6 +10,7 @@ import '../widgets/custom_app_bar.dart';
 import '../widgets/error_screen_widget.dart';
 import '../widgets/shopping_cart_screen/cart_item.dart';
 
+//экран Корзина
 class ShoppingCartScreen extends StatelessWidget {
   const ShoppingCartScreen({super.key});
 

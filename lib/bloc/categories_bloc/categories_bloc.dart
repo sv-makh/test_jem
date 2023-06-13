@@ -8,6 +8,7 @@ part 'categories_event.dart';
 
 part 'categories_state.dart';
 
+//блок для экрана категорий (главного) CategoriesScreen
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   CategoriesBloc({required this.apiDataRepository})
       : super(CategoriesLoading()) {

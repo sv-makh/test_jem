@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DishImage extends StatelessWidget {
-  const DishImage({super.key, required this.width, required this.height, required this.imageUrl});
+  const DishImage(
+      {super.key,
+      required this.width,
+      required this.height,
+      required this.imageUrl});
 
   final double width;
   final double height;

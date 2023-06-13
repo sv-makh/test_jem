@@ -6,6 +6,7 @@ import '../models/category.dart';
 import '../models/dish.dart';
 import '../models/response_data_categories.dart';
 
+//получение списков категорий и блюд для работы с ними через блок
 class ApiDataRepository {
   final _client = ApiClient(Dio(BaseOptions(contentType: "application/json")));
 

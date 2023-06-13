@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/models/dish.dart';
 
+//цена и вес блюда строкой
 class DishMetrics extends StatelessWidget {
   final Dish dish;
 

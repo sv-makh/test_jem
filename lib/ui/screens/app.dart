@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:test_jem/ui/widgets/custom_bottom_nav_bar.dart';
 import 'package:test_jem/ui/widgets/tab_navigator.dart';
 
+//экран с навигацией - навигаторы и bottomNavigationBar
+
 //чтобы навигация на вкладках осуществлялась независимо
 //и BottomNavigationBar всегда оставалась на экране,
 //на каждой вкладке создаётся свой навигатор (со своим ключом GlobalKey)

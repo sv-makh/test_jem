@@ -12,9 +12,16 @@ class DishesLoading extends DishesState {
 class DishesLoaded extends DishesState {
   const DishesLoaded(this.dishes, this.allDishes, this.tags, this.activeTag);
 
+  //блюда для отображения
   final List<Dish> dishes;
+
+  //все блюда категории
   final List<Dish> allDishes;
+
+  //все теги всех блюд
   final List<String> tags;
+
+  //активный в данный момент тег
   final String activeTag;
 
   @override

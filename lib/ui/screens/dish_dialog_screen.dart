@@ -11,6 +11,7 @@ import 'package:test_jem/ui/widgets/dish_metrics.dart';
 
 import '../widgets/dish_dialog_screen/custom_icon_button.dart';
 
+//карточка блюда, появляющаяся поверх экрана с блюдами
 class DishDialogScreen extends StatelessWidget {
   final Dish dish;
 

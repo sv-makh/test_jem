@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../helpers/constants.dart';
 
+//виджет с количеством данного блюда в корзине
 class CountBox extends StatelessWidget {
   final String text;
   final double size;

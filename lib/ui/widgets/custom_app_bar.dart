@@ -5,6 +5,7 @@ import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 
 import '../helpers/constants.dart';
 
+//аппбар для главного экрана и корзины
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
@@ -24,6 +25,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     initDateFormatting();
   }
 
+  //необходимо для текущей даты в русской локали
   Future<void> initDateFormatting() async {
     await initializeDateFormatting('ru_RU', null).then((_) => setState(() {}));
   }
@@ -43,15 +45,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(city,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  )),
+              Text(
+                city,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Text(
                 date,
                 style: TextStyle(
-                    fontSize: 14, color: Colors.black.withOpacity(0.5)),
+                  fontSize: 14,
+                  color: Colors.black.withOpacity(0.5),
+                ),
               ),
             ],
           ),

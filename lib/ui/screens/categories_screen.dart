@@ -7,6 +7,7 @@ import '../helpers/constants.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/loading_screen_widget.dart';
 
+//экран Главный
 class CategoriesScreen extends StatelessWidget {
   final ValueChanged<String>? onPush;
 

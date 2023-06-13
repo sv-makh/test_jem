@@ -8,6 +8,7 @@ import '../widgets/dishes_screen/dishes_item.dart';
 import '../widgets/dishes_screen/tag_button.dart';
 import '../widgets/loading_screen_widget.dart';
 
+//экран с блюдами
 class DishesScreen extends StatelessWidget {
   final String categoryName;
 
@@ -15,9 +16,12 @@ class DishesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //количество колонок в сетке
     int numOfColumns = 3;
+    //ширина элемента сетки
     double itemWidth =
         MediaQuery.of(context).size.width / numOfColumns - sidePadding * 2;
+    //высота элемента сетки
     double itemHeight = itemWidth + 50;
 
     return Scaffold(

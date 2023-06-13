@@ -8,6 +8,10 @@ part 'dishes_event.dart';
 
 part 'dishes_state.dart';
 
+//тег для показа всех блюд
+const String _allMenu = 'Все меню';
+
+//блок для экрана блюд DishesScreen
 class DishesBloc extends Bloc<DishesEvent, DishesState> {
   DishesBloc({required this.apiDataRepository}) : super(DishesLoading()) {
     on<DishesStarted>(_onStarted);
@@ -15,17 +19,25 @@ class DishesBloc extends Bloc<DishesEvent, DishesState> {
   }
 
   final ApiDataRepository apiDataRepository;
+
+  //список всех блюд в категории
   late List<Dish> allDishes;
+
+  //список всех тегов
   late List<String> tags;
 
   Future<void> _onStarted(
       DishesStarted event, Emitter<DishesState> emitter) async {
     emitter(DishesLoading());
     try {
+      //скачивааются все блюда в категории
       allDishes = await apiDataRepository.loadDishes();
+      //блюда, которые будут показаны на экране - вначале все
       List<Dish> dishes = [...allDishes];
+      //получение тегов из всех блюд
       tags = _getTags(allDishes);
       String activeTag = '';
+      //установка активного тега
       if (tags.contains(_allMenu)) {
         activeTag = _allMenu;
       } else {
@@ -37,39 +49,41 @@ class DishesBloc extends Bloc<DishesEvent, DishesState> {
     }
   }
 
+  //при активации тега изменяется список показываемых блюд
   void _onTagTapped(DishesTagTapped event, Emitter<DishesState> emitter) {
     List<Dish> dishesWithTag = _pickDishes(allDishes, event.tag);
     emitter(DishesLoaded(dishesWithTag, allDishes, tags, event.tag));
   }
-}
 
-const String _allMenu = 'Все меню';
-
-List<Dish> _pickDishes(List<Dish> allDishes, String tag) {
-  List<Dish> result = [];
-  for (var dish in allDishes) {
-    if (dish.tegs.contains(tag)) {
-      result.add(dish);
+  //возвращаются блюда, отмеченные тегом tag
+  List<Dish> _pickDishes(List<Dish> allDishes, String tag) {
+    List<Dish> result = [];
+    for (var dish in allDishes) {
+      if (dish.tegs.contains(tag)) {
+        result.add(dish);
+      }
     }
+    return result;
   }
-  return result;
-}
 
-List<String> _getTags(List<Dish> allDishes) {
-  Set<String> tagSet = {};
-  List<String> result = [];
+  //получение неповторяющегося списка тегов из всех блюд
+  List<String> _getTags(List<Dish> allDishes) {
+    Set<String> tagSet = {};
+    List<String> result = [];
 
-  for (var dish in allDishes) {
-    for (var tag in dish.tegs) {
-      tagSet.add(tag);
+    for (var dish in allDishes) {
+      for (var tag in dish.tegs) {
+        tagSet.add(tag);
+      }
     }
-  }
 
-  result = tagSet.toList();
-  if (tagSet.contains(_allMenu)) {
-    result.remove(_allMenu);
-    result.insert(0, _allMenu);
-  }
+    result = tagSet.toList();
+    //установка тега "Все меню" первым
+    if (tagSet.contains(_allMenu)) {
+      result.remove(_allMenu);
+      result.insert(0, _allMenu);
+    }
 
-  return result;
+    return result;
+  }
 }

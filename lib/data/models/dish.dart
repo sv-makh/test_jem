@@ -24,10 +24,10 @@ class Dish extends Equatable {
   });
 
   @override
-  List<Object> get props => [id, name, price, weight, description, image_url, tegs];
+  List<Object> get props =>
+      [id, name, price, weight, description, image_url, tegs];
 
-  factory Dish.fromJson(Map<String, dynamic> json) =>
-      _$DishFromJson(json);
+  factory Dish.fromJson(Map<String, dynamic> json) => _$DishFromJson(json);
 
   Map<String, dynamic> toJson() => _$DishToJson(this);
 }
