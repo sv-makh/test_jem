@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
 import 'package:test_jem/data/models/dish.dart';
-import 'package:test_jem/ui/widgets/constants.dart';
+import 'package:test_jem/ui/helpers/constants.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/dish_dialog_screen/spacer_box.dart';
 import 'package:test_jem/ui/widgets/dish_image.dart';

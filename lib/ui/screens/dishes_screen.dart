@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_jem/bloc/dishes_bloc/dishes_bloc.dart';
-import 'package:test_jem/ui/widgets/constants.dart';
+import 'package:test_jem/ui/helpers/constants.dart';
 import 'package:test_jem/ui/widgets/dishes_screen/dishes_appbar.dart';
 import 'package:test_jem/ui/widgets/error_screen_widget.dart';
 import '../widgets/dishes_screen/dishes_item.dart';
@@ -28,7 +28,8 @@ class DishesScreen extends StatelessWidget {
             return const LoadingScreenWidget();
           } else if (state is DishesLoaded) {
             return Padding(
-              padding: const EdgeInsets.only(left: sidePadding, right: sidePadding),
+              padding:
+                  const EdgeInsets.only(left: sidePadding, right: sidePadding),
               child: Column(
                 children: [
                   SizedBox(
@@ -36,7 +37,9 @@ class DishesScreen extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return TagButton(text: state.tags[index], activeTag: state.activeTag);
+                        return TagButton(
+                            text: state.tags[index],
+                            activeTag: state.activeTag);
                       },
                       itemCount: state.tags.length,
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../helpers/constants.dart';
 
 class MinusButton extends StatelessWidget {
   final VoidCallback? onTap;

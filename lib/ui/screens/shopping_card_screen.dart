@@ -5,7 +5,7 @@ import 'package:test_jem/bloc/shopping_cart_bloc/shopping_cart_bloc.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/loading_screen_widget.dart';
 import '../../data/models/dish.dart';
-import '../widgets/constants.dart';
+import '../helpers/constants.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/error_screen_widget.dart';
 import '../widgets/shopping_cart_screen/cart_item.dart';

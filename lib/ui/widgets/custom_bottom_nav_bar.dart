@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   CustomBottomNavBar({super.key, required this.selectedIndex, required this.onItemTapped});
@@ -13,19 +14,19 @@ class CustomBottomNavBar extends StatelessWidget {
       showUnselectedLabels: true,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
+          icon: Icon(CustomIcons.home),//Icon(Icons.home_filled),
           label: 'Главная',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
+          icon: Icon(CustomIcons.search),
           label: 'Поиск',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_basket_outlined),
+          icon: Icon(CustomIcons.bag),
           label: 'Корзина',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle_outlined),
+          icon: Icon(CustomIcons.profile),
           label: 'Аккаунт',
         ),
       ],
