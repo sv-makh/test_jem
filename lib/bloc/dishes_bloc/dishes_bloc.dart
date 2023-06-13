@@ -15,15 +15,15 @@ class DishesBloc extends Bloc<DishesEvent, DishesState> {
   }
 
   final ApiDataRepository apiDataRepository;
-  late final List<Dish> allDishes;
-  late final List<String> tags;
+  late List<Dish> allDishes;
+  late List<String> tags;
 
   Future<void> _onStarted(
       DishesStarted event, Emitter<DishesState> emitter) async {
     emitter(DishesLoading());
     try {
       allDishes = await apiDataRepository.loadDishes();
-      final dishes = [...allDishes];
+      List<Dish> dishes = [...allDishes];
       tags = _getTags(allDishes);
       String activeTag = '';
       if (tags.contains(_allMenu)) {

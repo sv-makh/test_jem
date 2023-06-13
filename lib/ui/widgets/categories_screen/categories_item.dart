@@ -15,6 +15,7 @@ class CategoriesItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        BlocProvider.of<DishesBloc>(context).add(DishesStarted());
         onPush?.call(category.name);
       },
       child: Padding(

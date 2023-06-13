@@ -8,14 +8,26 @@ class DishImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: const BoxDecoration(
-        color: Color(0xffF8F7F5),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+    double padding = 14;
+
+    return Stack(children: [
+      Container(
+        width: size,
+        height: size,
+        decoration: const BoxDecoration(
+          color: Color(0xffF8F7F5),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
       ),
-      child: Image.network(imageUrl),
-    );
+      Positioned(
+        top: padding / 2,
+        left: padding / 2,
+        child: SizedBox(
+          width: size - padding,
+          height: size - padding,
+          child: Image.network(imageUrl),
+        ),
+      ),
+    ]);
   }
 }

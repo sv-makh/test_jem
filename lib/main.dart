@@ -33,8 +33,7 @@ class MyApp extends StatelessWidget {
             ..add(CategoriesStarted()),
         ),
         BlocProvider(
-          create: (_) => DishesBloc(apiDataRepository: apiDataRepository)
-            ..add(DishesStarted()),
+          create: (_) => DishesBloc(apiDataRepository: apiDataRepository),
         ),
         BlocProvider(
           create: (_) =>
