@@ -43,7 +43,7 @@ class DishesBloc extends Bloc<DishesEvent, DishesState> {
   }
 }
 
-final String _allMenu = 'Все меню';
+const String _allMenu = 'Все меню';
 
 List<Dish> _pickDishes(List<Dish> allDishes, String tag) {
   List<Dish> result = [];

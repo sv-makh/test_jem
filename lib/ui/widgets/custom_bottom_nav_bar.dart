@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  CustomBottomNavBar({super.key, required this.selectedIndex, required this.onItemTapped});
+  const CustomBottomNavBar({super.key, required this.selectedIndex, required this.onItemTapped});
 
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;

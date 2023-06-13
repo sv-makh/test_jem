@@ -14,19 +14,19 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor:
-        MaterialStateProperty.all<Color>(Color(0xff3364E0)),
+        MaterialStateProperty.all<Color>(const Color(0xff3364E0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
       ),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Center(
           child: Text(
             text,
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: const TextStyle(fontSize: 16, color: Colors.white),
           ),
         ),
       ),

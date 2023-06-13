@@ -11,17 +11,17 @@ class CustomIconButton extends StatelessWidget {
     double size = 40;
 
     return InkWell(
+      onTap: onTap,
       child: Container(
         width: size,
         height: size,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
         child: icon,
       ),
-      onTap: onTap,
     );
   }
 }

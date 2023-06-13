@@ -15,7 +15,7 @@ class CountBox extends StatelessWidget {
       height: size,
       color: cartButtonsColor,
       child: Center(
-        child: Text(text, style: TextStyle(fontSize: 14),),
+        child: Text(text, style: const TextStyle(fontSize: 14),),
       ),
     );
   }

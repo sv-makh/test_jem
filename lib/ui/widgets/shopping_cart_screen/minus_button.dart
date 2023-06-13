@@ -11,10 +11,11 @@ class MinusButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         width: size,
         height: size,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: cartButtonsColor,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.only(
@@ -22,9 +23,8 @@ class MinusButton extends StatelessWidget {
             bottomLeft: Radius.circular(10),
           ),
         ),
-        child: Icon(Icons.remove),
+        child: const Icon(Icons.remove),
       ),
-      onTap: onTap,
     );
   }
 }

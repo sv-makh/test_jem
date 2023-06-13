@@ -16,7 +16,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({
+  const MyApp({
     super.key,
     required this.apiDataRepository,
     required this.shoppingCartRepository,
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'SFProDisplay',
         ),
-        home: App(),
+        home: const App(),
         debugShowCheckedModeBanner: false,
       ),
     );

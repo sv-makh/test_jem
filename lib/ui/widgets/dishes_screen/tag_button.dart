@@ -23,7 +23,7 @@ class TagButton extends StatelessWidget {
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-            isButtonActivated ? Color(0xff3364E0) : Color(0xffF8F7F5)),
+            isButtonActivated ? const Color(0xff3364E0) : const Color(0xffF8F7F5)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

@@ -13,7 +13,7 @@ class Dish extends Equatable {
   final String image_url;
   final List<String> tegs;
 
-  Dish({
+  const Dish({
     required this.id,
     required this.name,
     required this.price,

@@ -27,7 +27,7 @@ class DishesAppbar extends StatelessWidget implements PreferredSizeWidget {
                 title,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               )),
           const Spacer(),
           const CircleAvatar(

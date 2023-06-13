@@ -1,11 +1,9 @@
-import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter/material.dart';
 
 import 'package:test_jem/main.dart' as app;
-import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 import 'package:test_jem/ui/screens/dish_dialog_screen.dart';
 import 'package:test_jem/ui/screens/dishes_screen.dart';
 import 'package:test_jem/ui/screens/shopping_cart_screen.dart';

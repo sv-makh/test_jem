@@ -33,7 +33,7 @@ class TabNavigator extends StatelessWidget {
   //индекс вкладки, на которой находится навигатор
   final int tabIndex;
 
-  TabNavigator({required this.navigatorKey, required this.tabIndex});
+  const TabNavigator({required this.navigatorKey, required this.tabIndex});
 
   //функция перехода с вкладки Главная в категорию
   void _pushCategory(BuildContext context, {String catName = ''}) {
@@ -62,21 +62,21 @@ class TabNavigator extends StatelessWidget {
   //экраны для путей вкладки Поиск
   Map<String, WidgetBuilder> _routeBuildersSearch(BuildContext context) {
     return {
-      TabNavigatorRoutesSearch.root: (context) => SearchScreen(),
+      TabNavigatorRoutesSearch.root: (context) => const SearchScreen(),
     };
   }
 
   //экраны для путей вкладки Корзина
   Map<String, WidgetBuilder> _routeBuildersShoppingCart(BuildContext context) {
     return {
-      TabNavigatorRoutesShoppingCart.root: (context) => ShoppingCartScreen(),
+      TabNavigatorRoutesShoppingCart.root: (context) => const ShoppingCartScreen(),
     };
   }
 
   //экраны для путей вкладки Аккаунт
   Map<String, WidgetBuilder> _routeBuildersAccount(BuildContext context) {
     return {
-      TabNavigatorRoutesAccount.root: (context) => AccountScreen(),
+      TabNavigatorRoutesAccount.root: (context) => const AccountScreen(),
     };
   }
 
