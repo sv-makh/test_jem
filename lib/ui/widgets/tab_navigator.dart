@@ -3,7 +3,7 @@ import 'package:test_jem/ui/screens/account_screen.dart';
 import 'package:test_jem/ui/screens/dishes_screen.dart';
 import 'package:test_jem/ui/screens/categories_screen.dart';
 import 'package:test_jem/ui/screens/search_screen.dart';
-import 'package:test_jem/ui/screens/shopping_card_screen.dart';
+import 'package:test_jem/ui/screens/shopping_cart_screen.dart';
 
 //класс с именами путей для вкладки Главная
 class TabNavigatorRoutesMain {

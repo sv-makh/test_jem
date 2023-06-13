@@ -8,7 +8,7 @@ import 'package:test_jem/main.dart' as app;
 import 'package:test_jem/ui/helpers/custom_icons_icons.dart';
 import 'package:test_jem/ui/screens/dish_dialog_screen.dart';
 import 'package:test_jem/ui/screens/dishes_screen.dart';
-import 'package:test_jem/ui/screens/shopping_card_screen.dart';
+import 'package:test_jem/ui/screens/shopping_cart_screen.dart';
 import 'package:test_jem/ui/widgets/categories_screen/categories_item.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/dishes_screen/dishes_item.dart';
