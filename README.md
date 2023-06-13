@@ -14,7 +14,7 @@
 
 <img src="assets/screenshots/dish.png" alt= “dish.png” width="250">
 
-экран 4 ([lib/ui/screens/shopping_cart_screen.dart](ui/screens/shopping_cart_screen.dart)):
+экран 4 ([lib/ui/screens/shopping_cart_screen.dart](lib/ui/screens/shopping_cart_screen.dart)):
 
 <img src="assets/screenshots/cart.png" alt= “cart.png” width="250">
 
