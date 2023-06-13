@@ -2,19 +2,19 @@
 
 ## Экраны из ТЗ
 
-экран 1 ([ui/screens/categories_screen.dart](ui/screens/categories_screen.dart)):
+экран 1 ([lib/ui/screens/categories_screen.dart](lib/ui/screens/categories_screen.dart)):
 
 <img src="assets/screenshots/main.png" alt= “main.png” width="250">
 
-экран 2 ([ui/screens/dishes_screen.dart](ui/screens/dishes_screen.dart)):
+экран 2 ([lib/ui/screens/dishes_screen.dart](lib/ui/screens/dishes_screen.dart)):
 
 <img src="assets/screenshots/category.png" alt= “category.png” width="250">
 
-экран 3 ([ui/screens/dish_dialog_screen.dart](ui/screens/dish_dialog_screen.dart)):
+экран 3 ([lib/ui/screens/dish_dialog_screen.dart](lib/ui/screens/dish_dialog_screen.dart)):
 
 <img src="assets/screenshots/dish.png" alt= “dish.png” width="250">
 
-экран 4 ([ui/screens/shopping_cart_screen.dart](ui/screens/shopping_cart_screen.dart)):
+экран 4 ([lib/ui/screens/shopping_cart_screen.dart](ui/screens/shopping_cart_screen.dart)):
 
 <img src="assets/screenshots/cart.png" alt= “cart.png” width="250">
 
@@ -28,12 +28,12 @@
 |assets/images|изображения проекта (аватар из аппбара)|
 |assets/screenshots|скриншоты и видео работы приложения|
 |lib/bloc|блоки для страниц с категориями, с блюдами и с корзиной|
-|data/api_client|класс для вызова API (используя Retrofit)|
-|data/models|классы моделей для объектов, полученных от API, а также модели категории, блюда и корзины|
-|data/repositories|репозитории для данных от API и для корзины - с ними работают блоки|
-|ui/helpers|вспомогательные файлы с константами и данными о кастомных иконках|
-|ui/screens|все экраны приложения|
-|ui/widgets|виджеты для отдельных экранов и для нескольких экранов|
+|lib/data/api_client|класс для вызова API (используя Retrofit)|
+|lib/data/models|классы моделей для объектов, полученных от API, а также модели категории, блюда и корзины|
+|lib/data/repositories|репозитории для данных от API и для корзины - с ними работают блоки|
+|lib/ui/helpers|вспомогательные файлы с константами и данными о кастомных иконках|
+|lib/ui/screens|все экраны приложения|
+|lib/ui/widgets|виджеты для отдельных экранов и для нескольких экранов|
 |integration_test|интеграционный тест|
 
 ### Тестирование
