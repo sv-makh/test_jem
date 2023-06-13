@@ -30,17 +30,20 @@ class ShoppingCartScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  ListView.builder(itemBuilder: (context, index) {
-                    Dish currentDish = state.cart.uniqueDishes[index];
-                    return CartItem(
-                      dish: currentDish,
-                      count: state.cart.countOfDish(currentDish),
-                    );
-                  },
-                    itemCount: state.cart.uniqueDishes.length,
-                    shrinkWrap: true,
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        Dish currentDish = state.cart.uniqueDishes[index];
+                        return CartItem(
+                          dish: currentDish,
+                          count: state.cart.countOfDish(currentDish),
+                        );
+                      },
+                      itemCount: state.cart.uniqueDishes.length,
+                      shrinkWrap: true,
+                    ),
                   ),
-                  const Spacer(),
+                  //const Spacer(),
                   CustomTextButton(
                     text: 'Оплатить ${state.cart.totalPrice} ₽',
                     onPressed: () {},
@@ -48,7 +51,8 @@ class ShoppingCartScreen extends StatelessWidget {
                 ],
               ),
             );
-          } else { //ShoppingCartError()
+          } else {
+            //ShoppingCartError()
             return const ErrorScreenWidget();
           }
         },

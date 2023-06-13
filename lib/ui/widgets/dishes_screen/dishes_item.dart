@@ -33,7 +33,8 @@ class DishesItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DishImage(
-              size: width,
+              width: width,
+              height: width,
               imageUrl: dish.image_url,
             ),
             SizedBox(

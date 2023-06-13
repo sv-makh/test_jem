@@ -5,6 +5,7 @@ import 'package:test_jem/data/models/dish.dart';
 import 'package:test_jem/ui/widgets/constants.dart';
 import 'package:test_jem/ui/widgets/custom_text_button.dart';
 import 'package:test_jem/ui/widgets/dish_dialog_screen/spacer_box.dart';
+import 'package:test_jem/ui/widgets/dish_image.dart';
 import 'package:test_jem/ui/widgets/dish_metrics.dart';
 
 import '../widgets/dish_dialog_screen/custom_icon_button.dart';
@@ -17,8 +18,8 @@ class DishDialogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //размеры подобраны экспериментально для лучшего вида
-    double imageSize = MediaQuery.of(context).size.width / 2;
-    double additionSize = 50;
+    double imageHeight = MediaQuery.of(context).size.width / 2 + 50;
+    double imageWidth = MediaQuery.of(context).size.width - 2 * sidePadding;
 
     return Dialog(
       backgroundColor: Colors.white,
@@ -33,42 +34,28 @@ class DishDialogScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(children: [
-              Container(
-                //размеры подобраны экспериментально для лучшего вида
-                width: double.infinity,
-                height: imageSize + additionSize,
-                decoration: const BoxDecoration(
-                  color: Color(0xffF8F7F5),
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
+              DishImage(
+                width: imageWidth,
+                height: imageHeight,
+                imageUrl: dish.image_url,
               ),
               Positioned(
-                //размеры подобраны экспериментально для лучшего вида
-                top: additionSize / 2,
-                left: imageSize / 3,
-                child: SizedBox(
-                  width: imageSize,
-                  height: imageSize,
-                  child: Image.network(dish.image_url),
-                ),
-              ),
-              Positioned(
-                top: 8,
+                  top: 8,
                   right: 8,
                   child: Row(
-                children: [
-                  CustomIconButton(
-                    icon: const Icon(Icons.favorite_border),
-                    onTap: () {},
-                  ),
-                  const SizedBox(width: 8),
-                  CustomIconButton(
-                      icon: const Icon(Icons.close),
-                      onTap: () {
-                        Navigator.pop(context);
-                      })
-                ],
-              )),
+                    children: [
+                      CustomIconButton(
+                        icon: const Icon(Icons.favorite_border),
+                        onTap: () {},
+                      ),
+                      const SizedBox(width: 8),
+                      CustomIconButton(
+                          icon: const Icon(Icons.close),
+                          onTap: () {
+                            Navigator.pop(context);
+                          })
+                    ],
+                  )),
             ]),
             const SpacerBox(),
             Text(
@@ -89,7 +76,8 @@ class DishDialogScreen extends StatelessWidget {
             CustomTextButton(
               text: 'Добавить в корзину',
               onPressed: () {
-                BlocProvider.of<ShoppingCartBloc>(context).add(ShoppingCartDishAdded(dish));
+                BlocProvider.of<ShoppingCartBloc>(context)
+                    .add(ShoppingCartDishAdded(dish));
               },
             ),
           ],

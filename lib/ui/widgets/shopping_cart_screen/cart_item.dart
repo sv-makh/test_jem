@@ -14,21 +14,22 @@ class CartItem extends StatelessWidget {
 
   CartItem({super.key, required this.dish, required this.count});
 
-  double height = 80.0;
+  double height = 99;//80.0;
   double size = 32.0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 8, bottom: 8),
+      padding: const EdgeInsets.only(top: 8),//, bottom: 8),
       height: height,
       width: double.infinity,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          DishImage(size: height, imageUrl: dish.image_url),
+          DishImage(width: height, height: height, imageUrl: dish.image_url),
           const SizedBox( width: 8 ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(width: 119, child: Text(dish.name)),
